@@ -35,6 +35,9 @@ spaceship_git_branch() {
       branch_color=$SPACESHIP_GIT_BRANCH_COLOR_DIRTY
   fi
 
+  if ! $(command git symbolic-ref -q HEAD > /dev/null); then
+      git_current_branch="*$git_current_branch"
+  fi
 
   spaceship::section \
     "$branch_color" \
